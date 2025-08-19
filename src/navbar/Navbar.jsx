@@ -14,7 +14,7 @@ export  function Navbar() {
   return (
     <nav className="header">
       <div className="logo">
-        <h4>Rise Of Coding</h4>
+        <h4>Muntaha's news</h4>
         <small>NewsApp</small>
       </div>
 

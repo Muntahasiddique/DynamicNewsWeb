@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Navbar } from './navbar/Navbar'
 import {NewsProvider} from './context/Context'
+import { NewsFeed } from './newsFeed/Newsfeed'
 
 function App() {
  
@@ -11,6 +12,7 @@ function App() {
   return (
  <NewsProvider>
 <Navbar />
+<NewsFeed />
  </NewsProvider>
 
   
