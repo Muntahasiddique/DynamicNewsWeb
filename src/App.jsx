@@ -1,21 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Navbar } from './navbar/Navbar'
-import {NewsProvider} from './context/Context'
+import { NewsProvider } from './context/Context'
 import { NewsFeed } from './newsFeed/Newsfeed'
+import { ThemeProvider, useTheme } from './context/ThemeContext'
+
+
 
 function App() {
- 
-
   return (
- <NewsProvider>
-<Navbar />
-<NewsFeed />
- </NewsProvider>
-
-  
+    <ThemeProvider>
+      <NewsProvider>
+        <div className="app">
+          <Navbar />
+          <NewsFeed />
+        </div>
+      </NewsProvider>
+    </ThemeProvider>
   )
 }
 

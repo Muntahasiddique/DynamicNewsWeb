@@ -203,3 +203,16 @@
     background: linear-gradient(135deg, #6366f1, #818cf8);
   }
 }
+/* NewsCard.css - With Dark Theme Support */
+.news-Card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.news-Card h3 {
+  color: var(--text-primary);
+}
+
+.news-Card p {
+  color: var(--text-secondary);
+}
