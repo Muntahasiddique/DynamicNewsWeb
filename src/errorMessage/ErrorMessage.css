@@ -1,0 +1,220 @@
+/* ErrorMessage.css */
+
+.error-message {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid;
+  animation: errorSlideIn 0.3s ease-out;
+  position: relative;
+}
+
+/* Default error style */
+.error-message {
+  background-color: #fee;
+  color: #c53030;
+  border-color: #f56565;
+}
+
+/* With icon */
+.error-message::before {
+  content: "❗";
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Alternative: Using Font Awesome (if available) */
+.error-message.with-icon::before {
+  content: "\f06a"; /* Font Awesome exclamation triangle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+/* Close button */
+.error-message .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.error-message .close-btn:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Variants */
+.error-message.info {
+  background-color: #ebf8ff;
+  color: #2b6cb0;
+  border-color: #4299e1;
+}
+
+.error-message.warning {
+  background-color: #fffbeb;
+  color: #b7791f;
+  border-color: #ecc94b;
+}
+
+.error-message.success {
+  background-color: #f0fff4;
+  color: #2f855a;
+  border-color: #48bb78;
+}
+
+/* Sizes */
+.error-message.small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.error-message.large {
+  padding: 1.5rem 2rem;
+  font-size: 1.125rem;
+}
+
+/* Layout options */
+.error-message.block {
+  display: block;
+}
+
+.error-message.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.error-message.with-action {
+  padding-right: 3rem;
+}
+
+/* Animation */
+@keyframes errorSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.error-message.attention {
+  animation: errorSlideIn 0.3s ease-out, errorShake 0.5s ease-in-out 0.3s;
+}
+
+/* Hover effect */
+.error-message.hoverable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error-message {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+  
+  .error-message.large {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .error-message {
+    background-color: rgba(254, 215, 215, 0.15);
+    color: #fc8181;
+  }
+  
+  .error-message.info {
+    background-color: rgba(235, 248, 255, 0.15);
+    color: #90cdf4;
+  }
+  
+  .error-message.warning {
+    background-color: rgba(255, 251, 235, 0.15);
+    color: #faf089;
+  }
+  
+  .error-message.success {
+    background-color: rgba(240, 255, 244, 0.15);
+    color: #9ae6b4;
+  }
+  
+  .error-message .close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Print styles */
+@media print {
+  .error-message {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    color: #000 !important;
+    background-color: #f9f9f9 !important;
+  }
+  
+  .error-message .close-btn {
+    display: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .error-message {
+    animation: none;
+  }
+  
+  .error-message.hoverable:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .error-message {
+    border-width: 2px;
+  }
+  
+  .error-message.info {
+    border-color: #0000ff;
+  }
+  
+  .error-message.warning {
+    border-color: #ffa500;
+  }
+  
+  .error-message.success {
+    border-color: #008000;
+  }
+}

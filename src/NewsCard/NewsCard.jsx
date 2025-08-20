@@ -1,9 +1,12 @@
 import './newscard.css'
-
+import defaultimage from '../assets/defaultimage.jfif'
 function NewsCard({article}) {
+  const handleimageerror = (e) =>{
+    e.target.src = defaultimage
+  }
   return (
     <div className='news-Card' >
-      <img src={article.urlToImage} alt="" className='news-image' />
+      <img src={article.urlToImage || defaultimage } alt="" className='news-image' onError={handleimageerror} />
       <div>
         <h3>{article.title}</h3>
         <p>{article.description}</p>
