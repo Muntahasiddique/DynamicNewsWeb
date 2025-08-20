@@ -1,63 +1,210 @@
-/* newsfeed.css */
+
+/* Newsfeed.css - Modern Layout with Animations */
 .news-feed {
-  padding: 2rem;
-  max-width: 1400px;
+  padding: 2.5rem;
+  max-width: 1440px;
   margin: 0 auto;
+  min-height: calc(100vh - 80px);
 }
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  animation: fadeIn 0.6s ease-out;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.news-grid > * {
+  animation: cardAppear 0.6s ease-out both;
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.news-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.news-grid > *:nth-child(2) { animation-delay: 0.1s; }
+.news-grid > *:nth-child(3) { animation-delay: 0.15s; }
+.news-grid > *:nth-child(4) { animation-delay: 0.2s; }
+.news-grid > *:nth-child(5) { animation-delay: 0.25s; }
+.news-grid > *:nth-child(6) { animation-delay: 0.3s; }
+.news-grid > *:nth-child(7) { animation-delay: 0.35s; }
+.news-grid > *:nth-child(8) { animation-delay: 0.4s; }
 
 .news-feed > p {
   text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  margin: 3rem 0;
+  font-size: 1.3rem;
+  color: #6b7280;
+  margin: 4rem 0;
+  font-weight: 500;
+  animation: pulse 2s infinite;
 }
 
-/* Loading animation */
 @keyframes pulse {
-  0% { opacity: 0.6; }
+  0% { opacity: 0.7; }
   50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  100% { opacity: 0.7; }
 }
 
+/* Loading state */
 .news-feed .loading {
-  animation: pulse 1.5s infinite;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
   font-size: 1.5rem;
-  color: #4ecdc4;
-  margin: 3rem 0;
+  color: #4f46e5;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 /* Error message */
 .news-feed .error {
   text-align: center;
-  color: #e74c3c;
-  background-color: #fdf0ed;
-  padding: 1.5rem;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 16px;
   margin: 2rem 0;
-  border-left: 4px solid #e74c3c;
+  background: linear-gradient(135deg, rgba(254, 226, 226, 0.8), rgba(254, 215, 215, 0.8));
+  color: #7f1d1d;
+  border-left: 5px solid #ef4444;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+}
+
+.empty-state svg {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  max-width: 500px;
+  line-height: 1.6;
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .news-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .news-feed {
+    padding: 2rem;
+  }
+  
+  .news-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
 @media (max-width: 768px) {
   .news-feed {
-    padding: 1rem;
+    padding: 1.5rem;
   }
   
   .news-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .news-feed > p {
+    font-size: 1.1rem;
+    margin: 3rem 0;
   }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 480px) {
+  .news-feed {
+    padding: 1rem;
+  }
+  
   .news-grid {
-    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+  
+  .empty-state svg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.3rem;
+  }
+  
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .news-feed > p {
+    color: #9ca3af;
+  }
+  
+  .empty-state {
+    color: #9ca3af;
+  }
+  
+  .empty-state h3 {
+    color: #d1d5db;
+  }
+  
+  .news-feed .error {
+    background: linear-gradient(135deg, rgba(127, 29, 29, 0.2), rgba(127, 29, 29, 0.15));
+    color: #fecaca;
+    border-left-color: #f87171;
   }
 }

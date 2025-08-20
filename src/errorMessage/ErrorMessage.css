@@ -1,146 +1,126 @@
-/* ErrorMessage.css */
 
+/* ErrorMessage.css - Modern Glassmorphism Design */
 .error-message {
-  padding: 1rem 1.5rem;
-  margin: 1rem 0;
-  border-radius: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem auto;
+  border-radius: 16px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid;
-  animation: errorSlideIn 0.3s ease-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
+  max-width: 90%;
+  animation: errorSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* Default error style */
 .error-message {
-  background-color: #fee;
-  color: #c53030;
-  border-color: #f56565;
+  background: linear-gradient(135deg, rgba(254, 215, 215, 0.85), rgba(254, 226, 226, 0.85));
+  color: #7f1d1d;
 }
 
-/* With icon */
 .error-message::before {
-  content: "❗";
-  font-size: 1.2rem;
+  content: "⚠️";
+  font-size: 1.3rem;
   flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
-/* Alternative: Using Font Awesome (if available) */
-.error-message.with-icon::before {
-  content: "\f06a"; /* Font Awesome exclamation triangle */
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-}
-
-/* Close button */
 .error-message .close-btn {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  background: none;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
   border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: inherit;
-  opacity: 0.7;
-  padding: 0;
-  width: 24px;
-  height: 24px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  transition: opacity 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  color: inherit;
 }
 
 .error-message .close-btn:hover {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg);
 }
 
 /* Variants */
 .error-message.info {
-  background-color: #ebf8ff;
-  color: #2b6cb0;
-  border-color: #4299e1;
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.85), rgba(239, 246, 255, 0.85));
+  color: #1e3a8a;
 }
 
 .error-message.warning {
-  background-color: #fffbeb;
-  color: #b7791f;
-  border-color: #ecc94b;
+  background: linear-gradient(135deg, rgba(254, 249, 195, 0.85), rgba(254, 252, 232, 0.85));
+  color: #713f12;
 }
 
 .error-message.success {
-  background-color: #f0fff4;
-  color: #2f855a;
-  border-color: #48bb78;
+  background: linear-gradient(135deg, rgba(209, 250, 229, 0.85), rgba(240, 253, 244, 0.85));
+  color: #065f46;
 }
 
 /* Sizes */
 .error-message.small {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   font-size: 0.875rem;
+  border-radius: 12px;
 }
 
 .error-message.large {
   padding: 1.5rem 2rem;
   font-size: 1.125rem;
-}
-
-/* Layout options */
-.error-message.block {
-  display: block;
-}
-
-.error-message.center {
-  text-align: center;
-  justify-content: center;
-}
-
-.error-message.with-action {
-  padding-right: 3rem;
+  border-radius: 20px;
 }
 
 /* Animation */
 @keyframes errorSlideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes errorShake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+@keyframes errorPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
 .error-message.attention {
-  animation: errorSlideIn 0.3s ease-out, errorShake 0.5s ease-in-out 0.3s;
+  animation: errorSlideIn 0.4s ease-out, errorPulse 1s ease-in-out 0.4s;
 }
 
 /* Hover effect */
 .error-message.hoverable:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .error-message {
-    padding: 0.875rem 1.25rem;
+    padding: 1rem 1.25rem;
     font-size: 0.9375rem;
+    max-width: 95%;
   }
   
   .error-message.large {
@@ -151,41 +131,36 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .error-message {
-    background-color: rgba(254, 215, 215, 0.15);
-    color: #fc8181;
+    background: linear-gradient(135deg, rgba(127, 29, 29, 0.25), rgba(127, 29, 29, 0.15));
+    color: #fecaca;
+    border-color: rgba(254, 202, 202, 0.15);
   }
   
   .error-message.info {
-    background-color: rgba(235, 248, 255, 0.15);
-    color: #90cdf4;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.25), rgba(30, 58, 138, 0.15));
+    color: #bfdbfe;
+    border-color: rgba(191, 219, 254, 0.15);
   }
   
   .error-message.warning {
-    background-color: rgba(255, 251, 235, 0.15);
-    color: #faf089;
+    background: linear-gradient(135deg, rgba(113, 63, 18, 0.25), rgba(113, 63, 18, 0.15));
+    color: #fef08a;
+    border-color: rgba(254, 240, 138, 0.15);
   }
   
   .error-message.success {
-    background-color: rgba(240, 255, 244, 0.15);
-    color: #9ae6b4;
-  }
-  
-  .error-message .close-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Print styles */
-@media print {
-  .error-message {
-    border: 1px solid #ccc;
-    box-shadow: none;
-    color: #000 !important;
-    background-color: #f9f9f9 !important;
+    background: linear-gradient(135deg, rgba(6, 95, 70, 0.25), rgba(6, 95, 70, 0.15));
+    color: #a7f3d0;
+    border-color: rgba(167, 243, 208, 0.15);
   }
   
   .error-message .close-btn {
-    display: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .error-message .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -198,23 +173,8 @@
   .error-message.hoverable:hover {
     transform: none;
   }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .error-message {
-    border-width: 2px;
-  }
   
-  .error-message.info {
-    border-color: #0000ff;
-  }
-  
-  .error-message.warning {
-    border-color: #ffa500;
-  }
-  
-  .error-message.success {
-    border-color: #008000;
+  .error-message .close-btn:hover {
+    transform: none;
   }
 }
